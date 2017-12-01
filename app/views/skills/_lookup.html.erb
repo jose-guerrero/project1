@@ -1,0 +1,33 @@
+<div id = "skill-lookup">
+  <%= form_tag search_skills_path, method: :get do %>
+  <p>
+
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <% end %>
+
+  <% if @skills %>
+    <% if @skills.size > 0 %>
+      <div id = "skill-lookup-results" class = "well results-block col-md-10">
+        <table class = "search-results-table col-md-12">
+          <tbody>
+            <% @skills.each do |skill| %>
+            <tr>
+              <td><%= skill.name %></td>
+              <td><%= link_to "Add Skill", add_skill_path(user: current_user, skill: skill),
+              class: "btn btn-xs btn-success", method: :post %>
+              </td>
+            </tr>
+
+            <%end%>
+
+          </tbody>
+        </table>
+      </div>
+      <%end%>
+    <%end%>
+    <div id = "friend lookup-errors"></div>
+
+
+</div>

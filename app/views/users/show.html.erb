@@ -1,0 +1,43 @@
+<div class = "container_main">
+
+  <div class = "container_details">
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar.url(:medium), :class => "style_image"%>
+    <% end %>
+    <p><strong><%= @user.full_name %></strong></p>
+    <p><strong><%= @user.email %></strong></p>
+  </div>
+
+  <div class = "subcontainers">
+    <p><strong>EXPERIENCE</strong></p>
+    <%= simple_format(@user.experience) -%>
+  </div>
+
+  <div class = "subcontainers">
+    <p><strong>EDUCATION</strong></p>
+    <%= simple_format(@user.education) -%>
+  </div>
+
+  <div class = "subcontainers">
+ <p><strong>SKILLS</strong></p>
+
+   <% if @user.skills.size > 0 %>
+     <table class="table table-stripped">
+       <thead>
+         <tr>
+           <th>Skills</th>
+         </tr>
+       </thead>
+
+       <tbody>
+         <% @user.skills.each do |skill| %>
+         <tr>
+           <td><%= skill.name %></td>
+         </tr>
+         <% end %>
+       </tbody>
+     </table>
+   <% end %>
+   </div>
+
+</div>

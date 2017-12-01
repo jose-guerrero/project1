@@ -1,0 +1,57 @@
+
+    <div class = "container_main">
+
+      <div class = "container_details">
+
+        <% if current_user.avatar? %>
+          <%= image_tag current_user.avatar.url(:medium), :class => "style_image"%>
+        <% end %>
+        <p><strong><%= current_user.full_name %></strong></p>
+        <p><strong><%= current_user.email %></strong></p>
+      </div>
+
+      <div class = "subcontainers">
+        <p><strong>EXPERIENCE</strong></p>
+        <%= simple_format(current_user.experience) -%>
+      </div>
+
+      <div class = "subcontainers">
+        <p><strong>EDUCATION</strong></p>
+        <%= simple_format(current_user.education) -%>
+      </div>
+
+
+   <div class = "subcontainers">
+  <p><strong>SKILLS</strong></p>
+
+    <%=render 'skills/lookup'%>
+
+    <% if current_user.skills.size > 0 %>
+      <table class="table table-stripped">
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% current_user.skills.each do |skill| %>
+          <tr>
+            <td><%= skill.name %></td>
+            <td>
+              <%= link_to "Remove skill", users_skill_path(skill.id),
+                                                  :method => :delete,
+                                                  :data => {:confirm => "Are you sure?"},
+                                                  :class => "btn btn-xs btn-danger" %>
+
+            </td>
+
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% end %>
+    </div>
+</div>
