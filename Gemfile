@@ -8,6 +8,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+gem 'ruby-statistics', '~> 2.0', '>= 2.0.2'
 # Use postgresql as the database for Active Record
 gem 'devise'
 gem 'twitter-bootstrap-rails'
